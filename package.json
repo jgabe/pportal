@@ -1,7 +1,7 @@
 {
   "name": "reactlab",
   "version": "0.1.0",
-  "private": true,
+  "description": "ReactJs sample",
   "dependencies": {
     "react": "^15.5.4",
     "react-addons-css-transition-group": "^15.6.0",
@@ -9,11 +9,13 @@
     "react-dom": "^15.5.4",
     "react-router": "^4.1.1",
     "react-router-dom": "^4.1.1",
-    "react-router4": "^4.0.0-alpha.3"
+    "react-router4": "^4.0.0-alpha.3",
+	"react-scripts": "1.0.7"
   },
-  "devDependencies": {
-    "react-scripts": "1.0.7"
-  },
+  "engine": {
+    "node": "*",
+    "npm": "*"
+  },  
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
