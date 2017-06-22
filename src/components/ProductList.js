@@ -42,7 +42,7 @@ class ProductList extends Component {
                     transitionLeaveTimeout={300}>
             <ul className="media-list">
               {this.props.products
-                .filter( product => product.name.toLowerCase().includes(this.state.filter.toLowerCase()) || product.description.toLowerCase().includes(this.state.filter.toLowerCase()))
+                .filter( product => product.name.toLowerCase().indexOf(this.state.filter.toLowerCase()) >= 0 || product.description.toLowerCase().indexOf(this.state.filter.toLowerCase()) >= 0)
                 .map( product =>
                   <Product key={product.id} product={product} />
                 )}

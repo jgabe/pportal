@@ -7,7 +7,7 @@ import { BrowserRouter, Route, Link, NavLink } from 'react-router-dom';
 class CategoryList extends Component {
   constructor(props) {
     super(props);
-    this.state = {filterCategories: '', categories: []};
+    this.state = {filterCategories: ''};
   }
 
   // fetchCategories() {
@@ -23,7 +23,7 @@ class CategoryList extends Component {
   }
 
   handleFilter(event) {
-    this.setState({categories: this.state.categories, filterCategories: event.target.value});
+    this.setState({filterCategories: event.target.value});
   }
 
   render() {
@@ -38,23 +38,24 @@ class CategoryList extends Component {
           </div>
 
           <ul className="media-list">
-            {this.props.categories
-              .filter( category => category.name.toLowerCase().includes(this.state.filterCategories.toLowerCase()) || category.description.toLowerCase().includes(this.state.filterCategories.toLowerCase()))
-              .map( category =>
+            {
+              this.props.categories
+                .filter( category => category.name.toLowerCase().indexOf(this.state.filterCategories.toLowerCase()) >= 0 || category.description.toLowerCase().indexOf(this.state.filterCategories.toLowerCase()) >= 0)
+                .map( category =>
 
-                <li key={category.id} className="media">
-                  <div className="media-left">
-                    <Link to={`/category/${category.id}`}>
-                      <img className="media-object" src={category.thumbnail} alt="..." />
-                    </Link>
-                  </div>
-                  <div className="media-body">
-                    <h4 className="media-heading">{category.name}</h4>
-                    {category.description}
-                  </div>
-                </li>
+                  <li key={category.id} className="media">
+                    <div className="media-left">
+                      <Link to={`/category/${category.id}`}>
+                        <img className="media-object" src={category.thumbnail} alt="..." />
+                      </Link>
+                    </div>
+                    <div className="media-body">
+                      <h4 className="media-heading">{category.name}</h4>
+                      {category.description}
+                    </div>
+                  </li>
 
-              )}
+                )}
           </ul>
         </div>
       </div>

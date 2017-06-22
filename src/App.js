@@ -13,16 +13,17 @@ class App extends Component {
     this.state = {categories: []};
   }
 
-  // getInitialState() {
-  //   return {categories: []};
-  // }
-
   fetchCategories() {
-    fetch(`/data/categories.json`)
-        .then( response => response.json())
-        .then( json =>
-          this.setState({categories : json})
-        );
+    fetch(`/data/categories.json`), {
+      headers : {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+       }
+     })
+    .then( response => response.json())
+    .then( json =>
+      this.setState({categories : json})
+    );
   }
 
   fetchCategoriesAjax() {

@@ -21,15 +21,20 @@ class Category extends Component {
     // TODO normally would have a different URL to fetch a single category //
 
     console.log('fetchCategoryById');
-    fetch(`/data/categories.json?id=${catId}`)
-        .then( response => response.json())
-        .then( json =>
-          this.setState({
-            products: this.state.products,
-            category : json.find( categIdx => categIdx.id == catId),
-            showAddProduct: this.state.showAddProduct
-          })
-        );
+    fetch(`/data/categories.json?id=${catId}`, {
+      headers : { // headers neeeded for IE11
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+       }
+     })
+    .then( response => response.json())
+    .then( json =>
+      this.setState({
+        products: this.state.products,
+        category : json.find( categIdx => categIdx.id == catId),
+        showAddProduct: this.state.showAddProduct
+      })
+    );
   }
 
   fetchProducts(catId) {
