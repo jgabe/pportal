@@ -14,16 +14,16 @@ class App extends Component {
   }
 
   fetchCategories() {
-    fetch(`/data/categories.json`), {
+    fetch(`/data/categories.json`, {
       headers : {
         'Content-Type': 'application/json',
         'Accept': 'application/json'
        }
      })
-    .then( response => response.json())
-    .then( json =>
-      this.setState({categories : json})
-    );
+      .then( response => response.json())
+      .then( json =>
+        this.setState({categories : json})
+      );
   }
 
   fetchCategoriesAjax() {
